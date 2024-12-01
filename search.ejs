@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tìm kiếm nhân viên</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Tìm kiếm nhân viên</h1>
+    <form action="/search" method="POST">
+        <input type="text" name="query" placeholder="Nhập tên nhân viên" required>
+        <button type="submit">Tìm kiếm</button>
+    </form>
+
+    <% if (employees) { %>
+        <h2>Kết quả tìm kiếm:</h2>
+        <% if (employees.length > 0) { %>
+            <ul>
+                <% employees.forEach(employee => { %>
+                    <li><%= employee.name %> - <%= employee.position %></li>
+                <% }) %>
+            </ul>
+        <% } else { %>
+            <p>Không tìm thấy kết quả.</p>
+        <% } %>
+
+        <div class="button-container">
+            <button onclick="window.location.href='/'" class="btn-home">
+                Quay về trang chính
+            </button>
+
+            <% if (employees.length === 0) { %>
+                <button onclick="window.location.href='/search'" class="btn-search-again">Thử tìm kiếm lại</button>
+            <% } %>
+        </div>
+    <% } %>
+</body>
+</html>

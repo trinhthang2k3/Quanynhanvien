@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Management</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <h1>Danh sách nhân viên</h1>
+
+    <!-- Links for Add Employee and Search -->
+    <div class="button-container">
+        <a href="/add" class="btn-home">Thêm nhân viên</a>
+        <a href="/search" class="btn-search-again">Tìm kiếm</a>
+    </div>
+
+    <!-- Employee Table -->
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tên</th>
+                <th>Ngày sinh</th>
+                <th>Chức vụ</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% employees.forEach(employee => { %>
+                <tr>
+                    <td><%= employee.id %></td>
+                    <td><%= employee.name %></td>
+                    <td><%= employee.dob %></td>
+                    <td><%= employee.position %></td>
+                    <td>
+                        <a href="/delete/<%= employee.id %>" class="btn-home" onclick="return confirm('Bạn có chắc chắn muốn xóa nhân viên này?')">Xóa</a>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>
